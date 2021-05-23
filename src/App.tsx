@@ -17,7 +17,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Test Check for Jira Integration
         </a>
       </header>
     </div>
