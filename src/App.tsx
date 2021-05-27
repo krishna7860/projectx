@@ -1,25 +1,26 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import Stepper from "./components/Stepper/Stepper";
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 function App() {
+  const titleList = [
+    {
+      index: 1,
+      title: "Please Select Location",
+    },
+    {
+      index: 2,
+      title: "Please Select Preferences",
+    },
+  ];
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Stepper initial={0} titleList={titleList}>
+        <p>1</p>
+        <p>2</p>
+      </Stepper>
     </div>
   );
 }
