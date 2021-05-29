@@ -1,6 +1,7 @@
 import React from "react";
 import useGenericState from "../../Library/useGenericState";
-import { StepsProps } from "./Stepper.dto";
+import { StepsProps } from "./Stepper.interface";
+import styles from "./Stepper.style";
 
 export default function Stepper(props: StepsProps): JSX.Element {
   const { className, initial, style, children, titleList } = props;
@@ -16,9 +17,18 @@ export default function Stepper(props: StepsProps): JSX.Element {
     setState({ current: activeStep });
   };
 
+  const headerWidth = `${100 / titleList.length}%`;
+
   return (
-    <div className={className} style={style}>
-      <h2>{titleList[current].title}</h2>
+    <div className={className} style={{ width: "50vw" }}>
+      <div style={styles.headerList}>
+        {titleList.map((header) => (
+          <div style={styles.header(headerWidth)}>
+            <h4>{header.title}</h4>
+            <span>{header.description}</span>
+          </div>
+        ))}
+      </div>
       {steps[state.current]}
       <button
         type="button"
