@@ -1,27 +1,32 @@
-import React from "react";
-import "./App.css";
-import Stepper from "./components/Stepper/Stepper";
+import { Provider } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { ThemeProvider } from "styled-components";
+// import { createBrowserHistory } from "history";
+import { BrowserRouter as Router } from "react-router-dom";
+import { useTheme } from "./theme/useTheme";
+import { GlobalStyles } from "./theme/GlobalStyles";
+import Routes from "./routes";
+import store from "./redux/index";
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 function App() {
-  const titleList = [
-    {
-      index: 1,
-      title: "Please Select Location",
-    },
-    {
-      index: 2,
-      title: "Please Select Preferences",
-    },
-  ];
-
+  const { theme, themeLoaded } = useTheme();
+  const [selectedTheme, setSelectedTheme] = useState(theme);
+  // const history = createBrowserHistory();
+  useEffect(() => {
+    setSelectedTheme(theme);
+  }, [theme, themeLoaded]);
   return (
-    <div className="App">
-      <Stepper initial={0} titleList={titleList}>
-        <p>1</p>
-        <p>2</p>
-      </Stepper>
-    </div>
+    <Provider store={store}>
+      {themeLoaded && (
+        <Router>
+          <ThemeProvider theme={selectedTheme}>
+            <GlobalStyles />
+            <Routes />
+          </ThemeProvider>
+        </Router>
+      )}
+    </Provider>
   );
 }
 

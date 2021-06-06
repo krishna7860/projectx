@@ -1,10 +1,10 @@
 import React from "react";
 import useGenericState from "../../Library/useGenericState";
 import { StepsProps } from "./Stepper.interface";
-import styles from "./Stepper.style";
+import { Header, Subheader, Button } from "./styles";
 
 export default function Stepper(props: StepsProps): JSX.Element {
-  const { className, initial, style, children, titleList } = props;
+  const { className, initial, children, titleList, submit } = props;
 
   const [state, setState] = useGenericState({
     children: React.Children.toArray(children),
@@ -16,34 +16,58 @@ export default function Stepper(props: StepsProps): JSX.Element {
   const handleClick = (activeStep: number) => {
     setState({ current: activeStep });
   };
-
-  const headerWidth = `${100 / titleList.length}%`;
+  const handleSubmit = () => {
+    submit();
+  };
 
   return (
-    <div className={className} style={{ width: "50vw" }}>
-      <div style={styles.headerList}>
-        {titleList.map((header) => (
-          <div style={styles.header(headerWidth)}>
-            <h4>{header.title}</h4>
-            <span>{header.description}</span>
+    <div className={className}>
+      <Header>
+        <h4>{titleList[current].title}</h4>
+      </Header>
+      <Subheader>
+        {titleList.map((title, index) => (
+          <div key={title.index}>
+            <hr className={current === index ? "active" : ""} />
+            <div>
+              <div className={current === index ? "active" : ""} />
+              <span>Select location</span>
+            </div>
           </div>
         ))}
-      </div>
+      </Subheader>
       {steps[state.current]}
-      <button
-        type="button"
-        disabled={current === steps.length - 1 && true}
-        onClick={() => handleClick(current + 1)}
-      >
-        Next
-      </button>
-      <button
-        type="button"
-        disabled={!current}
-        onClick={() => handleClick(current - 1)}
-      >
-        Previous
-      </button>
+      <div style={{ textAlign: "right" }}>
+        {current !== children.length - 1 ? (
+          <Button
+            type="button"
+            disabled={current === steps.length - 1 && true}
+            onClick={() => handleClick(current + 1)}
+          >
+            Next
+          </Button>
+        ) : (
+          ""
+        )}
+        {current !== 0 ? (
+          <Button
+            type="button"
+            disabled={!current}
+            onClick={() => handleClick(current - 1)}
+          >
+            Previous
+          </Button>
+        ) : (
+          ""
+        )}
+        {current === children.length - 1 ? (
+          <Button type="button" onClick={handleSubmit}>
+            Sign Up
+          </Button>
+        ) : (
+          ""
+        )}
+      </div>
     </div>
   );
 }

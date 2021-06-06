@@ -5,6 +5,7 @@ export interface StepsProps {
   onChange?: (current: number) => void;
   children: JSX.Element[];
   titleList: TitleProps[];
+  submit: () => void;
 }
 
 export interface TitleProps {
