@@ -1,20 +1,23 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import HeroComponent from "../../components/HeroComponent/HeroComponent";
-import Modal from "../../components/Modal/Modal";
-import useGenericState from "../../Library/useGenericState";
+import MostViewed from "./component/MostViewed/MostViewed";
+import { SectionTitle } from "./style";
+import TestimonalSection from "./component/TestimonalSection/TestimonalSection";
 import WelcomeGuide from "../WelcomeGuide/WelcomeGuide";
 
 const Landing = (props: any): JSX.Element => {
   const { showWelcomeDialog } = props;
 
   return (
-    <div>
+    <>
       <HeroComponent />
+      <SectionTitle>Most Viewed</SectionTitle>
+      <MostViewed />
+      <SectionTitle>Testimonals</SectionTitle>
+      <TestimonalSection />
       {showWelcomeDialog ? <WelcomeGuide /> : null}
-      <Modal title="Search Category" />
-    </div>
+    </>
   );
 };
 
