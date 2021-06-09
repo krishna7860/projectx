@@ -1,3 +1,7 @@
+.slider-wrapper{
+  width: 55%;
+}
+
   .variable-width .slick-slide p {
     background: #00558b;
     height: 100px;
@@ -27,7 +31,10 @@
   @media (max-width: 700px) {
     .content {
       width: 70%;
+    }.slider-wrapper{
+      width: 100%;
     }
+
   }
   .slick-slide .image {
     padding: 10px;
@@ -85,13 +92,13 @@
     height: 180px;
   }
   .slick-arrow {
-    background-color: grey;
+    background-color: transparent;
   }
   .slick-arrow:hover {
-    background-color: grey;
+    background-color: transparent;
   }
   .slick-arrow:focus {
-    background-color: grey;
+    background-color: transparent;
   }
   /* .button {
     background-color: #00558b;

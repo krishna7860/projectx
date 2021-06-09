@@ -1,59 +1,71 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable no-return-assign */
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Slider from "react-slick";
-import data from "./data";
-import "./slick-theme.css";
-import "./slick.css";
-import "./common.css";
+import "../../vendor/Slick/slick-theme.css";
+import "../../vendor/Slick/slick.css";
+import "../../vendor/Slick/common.css";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { NavWrapper, NavFor, NavBack } from "./Style";
+
 import SliderCard from "../SliderCard/SliderCard";
 
-const HeroSlider = () => {
-  const [state, setState] = useState({ oldSlide: 0, activeSlide: 0 });
+const HeroSlider = ({ items, setState, activeSlide }) => {
+  const matches = useMediaQuery("(max-width:600px)");
   let slide;
   const settings = {
     className: "center",
     centerMode: false,
     infinite: true,
     centerPadding: "60px",
-    slidesToShow: 3.5,
-    speed: 500,
+    slidesToShow: matches ? 2 : 3.5,
     arrows: false,
+    adaptiveHeight: false,
+    variableWidth: false,
+    autoplay: false,
+    speed: 1000,
+    autoplaySpeed: 1500,
     beforeChange: (current, next) =>
       setState({ oldSlide: current, activeSlide: next }),
     // afterChange: (current) => setState({ activeSlide2: current })
   };
-  useEffect(() => {
-    console.log(state);
-  }, [state]);
   const handleNext = () => {
     slide.slickNext();
+    // console.log("asd");
   };
   const handlePrev = () => {
     slide.slickPrev();
   };
   return (
-    <div
-      style={{
-        width: "60%",
-      }}
-    >
+    <div className="slider-wrapper">
       <Slider {...settings} ref={(c) => (slide = c)}>
-        <SliderCard />
-        <SliderCard />
-        <SliderCard />
-        <SliderCard />
-        <SliderCard />
-        <SliderCard />
+        {items.map((item, index) => {
+          return (
+            <SliderCard
+              item={item}
+              key={item.id}
+              active={index === activeSlide}
+            />
+          );
+        })}
       </Slider>
-      <div>
-        <button type="button" onClick={handlePrev}>
-          Prev
-        </button>
-        <button type="button" onClick={handleNext}>
-          Next
-        </button>
-      </div>
+      <NavWrapper>
+        <NavFor
+          color="#d1d8e3"
+          width="35px"
+          height="35px"
+          onClick={handlePrev}
+        />
+        <div style={{ marginRight: "5px" }} />
+        <NavBack
+          color="#d1d8e3"
+          width="35px"
+          height="35px"
+          onClick={handleNext}
+        />
+      </NavWrapper>
     </div>
   );
 };
