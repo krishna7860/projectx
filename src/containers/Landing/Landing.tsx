@@ -5,6 +5,7 @@ import MostViewed from "./component/MostViewed/MostViewed";
 import { SectionTitle } from "./style";
 import TestimonalSection from "./component/TestimonalSection/TestimonalSection";
 import WelcomeGuide from "../WelcomeGuide/WelcomeGuide";
+import CategorySearch from "../CategorySearch/CategorySearch";
 
 const Landing = (props: any): JSX.Element => {
   const { showWelcomeDialog } = props;
@@ -17,6 +18,7 @@ const Landing = (props: any): JSX.Element => {
       <SectionTitle>Testimonals</SectionTitle>
       <TestimonalSection />
       {showWelcomeDialog ? <WelcomeGuide /> : null}
+      <CategorySearch open onClose={() => {}} />
     </>
   );
 };
