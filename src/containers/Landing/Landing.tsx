@@ -5,6 +5,7 @@ import MostViewed from "./component/MostViewed/MostViewed";
 import { SectionTitle } from "./style";
 import TestimonalSection from "./component/TestimonalSection/TestimonalSection";
 import WelcomeGuide from "../WelcomeGuide/WelcomeGuide";
+import CategorySection from "./component/CategorySection/CategorySection";
 
 const Landing = (props: any): JSX.Element => {
   const { showWelcomeDialog } = props;
@@ -12,6 +13,8 @@ const Landing = (props: any): JSX.Element => {
   return (
     <>
       <HeroComponent />
+      <SectionTitle>Popular Categories</SectionTitle>
+      <CategorySection />
       <SectionTitle>Most Viewed</SectionTitle>
       <MostViewed />
       <SectionTitle>Testimonals</SectionTitle>
