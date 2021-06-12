@@ -1,11 +1,13 @@
 import {
   Box,
+  Fab,
   FormControl,
   InputLabel,
   MenuItem,
   Select,
 } from "@material-ui/core";
 import { Pagination } from "@material-ui/lab";
+import FilterListIcon from "@material-ui/icons/FilterList";
 import React from "react";
 import Input from "../../components/Input/Input";
 // import StyledLink from "../../components/StyledLink/StyledLink";
@@ -23,6 +25,8 @@ import {
   FilterSection,
   HeaderTitle,
   PaginationContainer,
+  StyledModal,
+  Body,
 } from "./style";
 import NavHeader from "../../components/Header/Header";
 // import CategoryCard from "../../components/CategoryCard/CategoryCard";
@@ -30,6 +34,7 @@ import { Category } from "../WelcomeGuide/PickPreferences/PickPreferences.interf
 import CategoryListingCard from "./CategoryListingCard/CategoryListingCard";
 import FilterCard from "./FilterCard/FIlterCard";
 import OptionCard from "./OptionsCard/OptionCard";
+import useGenericState from "../../Library/useGenericState";
 
 const listing = [
   {
@@ -93,15 +98,19 @@ const categories = [
 ];
 
 const CategoryListing: React.FC = () => {
-  const [age, setAge] = React.useState("");
+  const [state, setState] = useGenericState({
+    query: "",
+    showFilterModal: false,
+  });
 
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setAge(event.target.value as string);
+    setState({ query: event.target.value as string });
   };
 
-  const loading = false;
+  const { showFilterModal, query } = state;
+
   return (
-    <div>
+    <div style={{ position: "relative" }}>
       <NavHeader isTransparent={false} elevation="none" />
       <CategoryBanner />
       <Container>
@@ -120,7 +129,7 @@ const CategoryListing: React.FC = () => {
               <Select
                 labelId="demo-simple-select-outlined-label"
                 id="demo-simple-select-outlined"
-                value={age}
+                value={query}
                 onChange={handleChange}
                 label="Sort By"
                 style={{ padding: "4px" }}
@@ -174,6 +183,28 @@ const CategoryListing: React.FC = () => {
               ))}
         </CategoryContainer> */}
       </Container>
+      <Fab
+        aria-label="Filter Button"
+        className="filter_button"
+        color="primary"
+        onClick={() => setState({ showFilterModal: true })}
+      >
+        <FilterListIcon />
+      </Fab>
+
+      <StyledModal
+        open={showFilterModal}
+        onClose={() => setState({ showFilterModal: false })}
+        aria-labelledby="filter-modal"
+        aria-describedby="filter modal"
+      >
+        <Body>
+          <FilterSection data-display="block">
+            <FilterCard />
+            <OptionCard />
+          </FilterSection>
+        </Body>
+      </StyledModal>
     </div>
   );
 };

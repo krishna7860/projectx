@@ -23,4 +23,22 @@ body {
   .MuiChip-root  .MuiChip-icon {
     color: rgba(255, 255, 255, 0.9) !important;
   }
+
+  .filter_button {
+    position: fixed !important;
+    bottom: 24px;
+    right : 24px;
+    display: none !important;
+    backgroud: black !important;
+  }
+
+  @media screen and (max-width: 768px) {
+    .MuiFab-primary {
+      background-color: black !important;
+    }
+    .filter_button {
+      display: block !important;
+    }
+  }
+
 `;
