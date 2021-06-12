@@ -21,7 +21,7 @@ jobs:
       # run tests!
 #     - run: yarn test
       - run: yarn build
-      - aws-s3/copy:
+      - aws-s3/sync:
           arguments: '--delete'
           from: build/
           to: 's3://projectx-frontend'
