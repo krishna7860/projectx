@@ -1,4 +1,6 @@
 version: 2
+orbs:
+  aws-s3: circleci/aws-s3@x.y
 jobs:
   build:
     docker:
@@ -28,6 +30,3 @@ jobs:
           to: 's3://projectx-frontend'
 
       - run: yarn webhook-slack
-orbs:
-  aws-s3: circleci/aws-s3@x.y
-version: 2.1
