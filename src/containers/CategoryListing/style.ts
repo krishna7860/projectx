@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import banner from "../../assets/category_banner.png";
+import banner from "../../static/images/category_banner.png";
 
 export const CategoryBanner = styled.div`
   width: 100vw;
@@ -8,6 +8,7 @@ export const CategoryBanner = styled.div`
   background-image: url(${banner});
   background-size: contain;
   background-attachment: fixed;
+  margin-top: 80px;
 
   @media only screen and (max-width: 620px) {
     /* For mobile phones: */
@@ -19,12 +20,14 @@ export const Container = styled.div`
   width: 100%;
   padding: 2rem 12rem;
 
-  @media only screen and (max-width: 760px) {
-    /* For tablet phones: */
-    padding: 2rem 1rem;
+  @media screen and (max-width: 1366px) {
+    padding: 2rem 4rem;
   }
-  @media only screen and (max-width: 620px) {
-    /* For mobile phones: */
+
+  @media screen and (max-width: 1024px) {
+    padding: 2rem 2rem;
+  }
+  @media screen and (max-width: 768px) {
     padding: 2rem 1rem;
   }
 `;
@@ -37,8 +40,9 @@ export const CategorySeach = styled.div`
   position: sticky;
   position: -webkit-sticky;
   margin-top: 2rem;
-  top: 0px; /* required */
+  top: 80px; /* required */
   background: white;
+  z-index: 10;
 `;
 
 export const ScrollDiv = styled.div`
@@ -54,11 +58,19 @@ export const Header = styled.div`
 `;
 
 export const FilterContainer = styled.div`
-  width: 20%;
+  width: 40%;
   margin: 0px 1rem;
-  @media only screen and (max-width: 620px) {
-    /* For mobile phones: */
-    width: 40%;
+  @media screen and (max-width: 1024px) {
+    width: 50%;
+  }
+  @media screen and (max-width: 768px) {
+    width: 60%;
+  }
+  @media screen and (max-width: 540px) {
+    width: 60%;
+  }
+  @media screen and (max-width: 420px) {
+    display: none;
   }
 `;
 
@@ -95,12 +107,23 @@ export const ListingSection = styled.div`
 `;
 
 export const FilterSection = styled.div`
-  width: 45%;
+  width: 30%;
+  padding: 2rem 0.75rem;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const DisplaySection = styled.div`
-  width: 55%;
+  width: 70%;
   padding: 0rem 2rem;
+  @media screen and (max-width: 1024px) {
+    padding: 0rem 0rem;
+  }
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const HeaderTitle = styled.p`
@@ -108,4 +131,11 @@ export const HeaderTitle = styled.p`
   margin: 0px;
   color: black;
   margin-top: 5rem;
+`;
+
+export const PaginationContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0rem;
 `;

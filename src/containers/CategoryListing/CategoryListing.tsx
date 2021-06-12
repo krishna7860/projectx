@@ -6,7 +6,6 @@ import {
   Select,
 } from "@material-ui/core";
 import { Pagination } from "@material-ui/lab";
-import Skeleton from "@material-ui/lab/Skeleton";
 import React from "react";
 import Input from "../../components/Input/Input";
 // import StyledLink from "../../components/StyledLink/StyledLink";
@@ -23,10 +22,14 @@ import {
   DisplaySection,
   FilterSection,
   HeaderTitle,
+  PaginationContainer,
 } from "./style";
+import NavHeader from "../../components/Header/Header";
 // import CategoryCard from "../../components/CategoryCard/CategoryCard";
 import { Category } from "../WelcomeGuide/PickPreferences/PickPreferences.interface";
 import CategoryListingCard from "./CategoryListingCard/CategoryListingCard";
+import FilterCard from "./FilterCard/FIlterCard";
+import OptionCard from "./OptionsCard/OptionCard";
 
 const listing = [
   {
@@ -99,12 +102,13 @@ const CategoryListing: React.FC = () => {
   const loading = false;
   return (
     <div>
+      <NavHeader isTransparent={false} elevation="none" />
       <CategoryBanner />
       <Container>
         <Header>Best Options on Hotels</Header>
         <CategorySeach>
           <Input
-            placeholder="Search Catagory"
+            placeholder="Search Options In Hotels"
             icon="https://cdn0.iconfinder.com/data/icons/very-basic-2-android-l-lollipop-icon-pack/24/search-512.png"
           />
 
@@ -133,7 +137,10 @@ const CategoryListing: React.FC = () => {
         <ScrollDiv>
           <Tag>Hotel</Tag>
           <ListingSection>
-            <FilterSection />
+            <FilterSection>
+              <FilterCard />
+              <OptionCard />
+            </FilterSection>
             <DisplaySection>
               {categories.map((item) => (
                 <CategoryListingCard cardDetails={item} />
@@ -141,7 +148,9 @@ const CategoryListing: React.FC = () => {
             </DisplaySection>
           </ListingSection>
         </ScrollDiv>
-        <Pagination count={10} variant="outlined" shape="rounded" />
+        <PaginationContainer>
+          <Pagination count={10} variant="outlined" shape="rounded" />
+        </PaginationContainer>
         <HeaderTitle>Similar Options Available</HeaderTitle>
         {/* <CategoryContainer>
           {loading
