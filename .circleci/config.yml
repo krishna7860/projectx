@@ -2,7 +2,9 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:12.20.1
+      - image: node:12.20.1
+      - image: 'cimg/python:3.6'
+      
     working_directory: ~/repo
     steps:
       - checkout
@@ -19,12 +21,13 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       # run tests!
 #     - run: yarn test
-      - run: sudo apt-get update && sudo apt-get install -y python-dev
-      - run: sudo curl -O https://bootstrap.pypa.io/get-pip.py
-      - run: sudo python get-pip.py
-      - run: sudo pip install awscli --upgrade
-      - run: aws --version
-      - run: aws s3 ls
-      - run: yarn run deploy
+      - run: yarn build
+      - aws-s3/copy:
+          arguments: '--delete'
+          from: build/
+          to: 's3://projectx-frontend'
 
       - run: yarn webhook-slack
+orbs:
+  aws-s3: circleci/aws-s3@x.y
+version: 2.1
