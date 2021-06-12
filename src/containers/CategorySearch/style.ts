@@ -16,11 +16,12 @@ export const CategoryContainer = styled.div`
   overflow-y: auto;
   padding: 0.75rem 0rem;
   margin-top: 0.75rem;
-  @media only screen and (max-width: 599px) {
-    grid-template-columns: repeat(1, 1fr);
-  }
-  @media only screen and (min-width: 600px) and (max-width: 768px) {
+
+  @media screen and (max-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
+  }
+  @media screen and (max-width: 540px) {
+    grid-template-columns: repeat(1, 1fr);
   }
 `;
 
@@ -33,13 +34,14 @@ export const Body = styled.div`
   padding: 24px 48px;
   padding-bottom: 48px;
 
-  @media only screen and (max-width: 600px) {
+  @media screen and (max-width: 1024px) {
+    width: 80%;
+  }
+  @media screen and (max-width: 540px) {
     width: 100%;
     position: absolute;
-    bottom: -20px;
   }
-
-  @media only screen and (min-width: 768px) and (max-width: 1024px) {
-    width: 80%;
+  @media screen and (max-width: 320px) {
+    bottom: -100px;
   }
 `;
