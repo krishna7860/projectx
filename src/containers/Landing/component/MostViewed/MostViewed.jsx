@@ -33,13 +33,13 @@ function MostViewed() {
       setState({ oldSlide: current, activeSlide: next }),
     //  afterChange: (current) => setState({ activeSlide: current })
   };
-  const handleNext = () => {
-    slide.slickNext();
-    // console.log("asd");
-  };
-  const handlePrev = () => {
-    slide.slickPrev();
-  };
+  // const handleNext = () => {
+  //   slide.slickNext();
+  //   // console.log("asd");
+  // };
+  // const handlePrev = () => {
+  //   slide.slickPrev();
+  // };
 
   function SamplePrevArrow(props) {
     const { onClick, className, style } = props;
@@ -71,7 +71,7 @@ function MostViewed() {
   return (
     <Wrapper>
       <Slider {...settings} ref={(c) => (slide = c)}>
-        {[0, 2, 0, 0, 0, 0, 0, 0, 0].map((i) => {
+        {[0, 2, 0, 0, 0, 0, 0, 0, 0].map(() => {
           return (
             <Container>
               <InnerWrapper>
