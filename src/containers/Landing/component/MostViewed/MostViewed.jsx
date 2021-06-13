@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/no-use-before-define */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
@@ -14,7 +15,7 @@ import {
 import { Wrapper, Container, InnerWrapper } from "./Style";
 import CardView from "../CardView/CardView";
 
-function MostViewed() {
+function MostViewed({ margin, padding }) {
   const [state, setState] = useState({
     oldSlide: 0,
     activeSlide: 0,
@@ -69,7 +70,7 @@ function MostViewed() {
   }
 
   return (
-    <Wrapper>
+    <Wrapper padding={padding} margin={margin}>
       <Slider {...settings} ref={(c) => (slide = c)}>
         {[0, 2, 0, 0, 0, 0, 0, 0, 0].map((i) => {
           return (

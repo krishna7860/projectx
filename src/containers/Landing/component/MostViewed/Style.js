@@ -2,8 +2,8 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  padding: 0px 30px;
-  margin: 0px 30px;
+  padding: ${(props) => (props.padding ? "0px 30px" : "0px")};
+  margin: ${(props) => (props.margin ? "0px 30px" : "0px")};
   .slick-list {
     height: auto !important;
     padding-left: 0% !important;
