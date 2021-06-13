@@ -1,7 +1,8 @@
 export interface OptionProps {
-  id: number;
+  _id: number;
   title: string;
-  value: string;
+  slug: string;
+  createdAt: string;
 }
 
 export interface SelectBoxProps {
@@ -10,4 +11,5 @@ export interface SelectBoxProps {
   options: OptionProps[];
   type?: string;
   onChange: (params: string) => void;
+  disabled?: boolean;
 }

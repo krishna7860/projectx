@@ -3,10 +3,10 @@
 import React, { useEffect } from "react";
 import useGenericState from "../../Library/useGenericState";
 import { OptionProps, SelectBoxProps } from "./SelectBox.interface";
-import { Input, Droplist, Container, Options } from "./style";
+import { Input, Droplist, Container, Options, DropArrow } from "./style";
 
 const SelectBox = (props: SelectBoxProps): JSX.Element => {
-  const { placeholder, value, options, onChange } = props;
+  const { placeholder, value, options, onChange, disabled } = props;
   const [state, setState] = useGenericState({
     showDropdownList: false,
     currentValue: value || "",
@@ -35,7 +35,7 @@ const SelectBox = (props: SelectBoxProps): JSX.Element => {
     }
     let datalist = options;
     datalist = datalist.filter((item) =>
-      item.value
+      item.slug
         .toLocaleLowerCase()
         .startsWith(e.target.value.toLocaleLowerCase())
     );
@@ -50,15 +50,16 @@ const SelectBox = (props: SelectBoxProps): JSX.Element => {
         value={currentValue}
         onChange={handleSearch}
         onClick={() => setState({ showDropdownList: true })}
+        disabled={disabled}
       />
       {showDropdownList && (
         <Droplist>
           {dropdownList.map((option: OptionProps) => (
             <Options
-              key={option.id}
-              data-value={option.value}
+              key={option._id}
+              data-value={option.slug}
               onClick={() => {
-                handleInputChange(option.value);
+                handleInputChange(option.title);
               }}
             >
               {option.title}
@@ -66,6 +67,7 @@ const SelectBox = (props: SelectBoxProps): JSX.Element => {
           ))}
         </Droplist>
       )}
+      <DropArrow />
     </Container>
   );
 };

@@ -41,6 +41,7 @@ const PickLocation = (props: any): JSX.Element => {
         options={cities}
         onChange={handleSelectedCity}
         value={selectedCity}
+        disabled={selectedState === ""}
       />
     </Container>
   );
