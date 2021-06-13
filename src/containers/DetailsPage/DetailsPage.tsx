@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../../components/Header/Header";
 
-const DetailsPage = () => {
+const DetailsPage: React.FC = () => {
   return (
     <>
       <Header isTransparent={false} />

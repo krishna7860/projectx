@@ -9,8 +9,9 @@ import {
   SectionRight,
   Image,
 } from "./Style";
+import { TestinomialProps } from "./Testinomial.interface";
 
-const TestimonalCard = ({ data }) => {
+const TestimonalCard: React.FC<TestinomialProps> = ({ data }): JSX.Element => {
   return (
     <Conatiner>
       <SectionLeft>

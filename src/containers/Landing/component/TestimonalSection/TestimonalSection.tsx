@@ -5,7 +5,7 @@ import avatar from "../../../../static/images/taras-shypka-QEgHL8NN7nM-unsplash.
 import TestimonalCard from "../../../../components/TestimonalCard/TestimonalCard";
 import { Container } from "./Style";
 
-function TestimonalSection() {
+const TestimonalSection: React.FC = () => {
   return (
     <Container>
       {data.map((item) => {
@@ -13,7 +13,7 @@ function TestimonalSection() {
       })}
     </Container>
   );
-}
+};
 
 export default TestimonalSection;
 

@@ -28,9 +28,7 @@ import {
 } from "./style";
 
 export default function CategoryListingCard({ cardDetails }) {
-  const handleClick = () => {
-    console.info("You clicked the Chip.");
-  };
+  const handleClick = () => {};
   return (
     <WrapperContainer>
       <Container>

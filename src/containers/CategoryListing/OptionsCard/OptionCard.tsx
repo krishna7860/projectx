@@ -1,4 +1,4 @@
-import { Checkbox, Switch } from "@material-ui/core";
+import { Checkbox } from "@material-ui/core";
 import React from "react";
 import { StyledDiv, Header, Hr, Span } from "./style";
 

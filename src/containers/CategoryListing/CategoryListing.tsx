@@ -1,5 +1,4 @@
 import {
-  Box,
   Fab,
   FormControl,
   InputLabel,
@@ -19,7 +18,7 @@ import {
   Container,
   FilterContainer,
   Tag,
-  CategoryContainer,
+  // CategoryContainer,
   ListingSection,
   DisplaySection,
   FilterSection,
@@ -30,7 +29,7 @@ import {
 } from "./style";
 import NavHeader from "../../components/Header/Header";
 // import CategoryCard from "../../components/CategoryCard/CategoryCard";
-import { Category } from "../WelcomeGuide/PickPreferences/PickPreferences.interface";
+// import { Category } from "../WelcomeGuide/PickPreferences/PickPreferences.interface";
 import CategoryListingCard from "./CategoryListingCard/CategoryListingCard";
 import FilterCard from "./FilterCard/FIlterCard";
 import OptionCard from "./OptionsCard/OptionCard";
