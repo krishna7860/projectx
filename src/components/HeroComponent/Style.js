@@ -36,7 +36,7 @@ export const Wrapper = styled.div`
   align-items: center;
   @media (max-width: 700px) {
     flex-direction: column;
-    padding: 15% 0px 10% 20px;
+    padding: 15% 0px 10% 0px;
   }
 `;
 
@@ -44,6 +44,7 @@ export const InfoWrapper = styled(motion.div)`
   width: 40%;
   @media (max-width: 700px) {
     width: 100%;
+    padding: 0px 30px;
   }
 `;
 export const Title = styled(motion.h1)`

@@ -80,7 +80,11 @@ const Header = ({ isTransparent }) => {
         >
           Login
         </ActionButton>
-        <ActionButton variant="contained" isTransparent>
+        <ActionButton
+          variant="contained"
+          outline="contained"
+          isTransparent={isTransparent}
+        >
           SignUp
         </ActionButton>
       </>
@@ -123,6 +127,7 @@ const Header = ({ isTransparent }) => {
             "aria-haspopup": "true",
             onClick: handleDrawerOpen,
           }}
+          isTransparent={isTransparent}
         >
           <MenuIcon />
         </MenuIconButton>
@@ -139,10 +144,20 @@ const Header = ({ isTransparent }) => {
 
         <div>{tourxLogo}</div>
         <EndWrapper>
-          <ActionButton variant="outlined" outline="outline">
+          <ActionButton
+            variant="outlined"
+            outline="outline"
+            isTransparent={isTransparent}
+          >
             Login
           </ActionButton>
-          <ActionButton variant="contained">SignUp</ActionButton>
+          <ActionButton
+            variant="contained"
+            outline="contained"
+            isTransparent={isTransparent}
+          >
+            SignUp
+          </ActionButton>
         </EndWrapper>
       </Toolbar>
     );
