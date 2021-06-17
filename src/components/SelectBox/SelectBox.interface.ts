@@ -3,6 +3,8 @@ export interface OptionProps {
   title: string;
   slug: string;
   createdAt: string;
+  name?: string;
+  stateId?: string;
 }
 
 export interface SelectBoxProps {

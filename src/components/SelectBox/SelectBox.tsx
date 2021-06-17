@@ -15,7 +15,7 @@ const SelectBox = (props: SelectBoxProps): JSX.Element => {
 
   useEffect(() => {
     setState({ dropdownList: options });
-  }, [options]);
+  }, [options, value]);
 
   const { showDropdownList, currentValue, dropdownList } = state;
 
@@ -49,8 +49,9 @@ const SelectBox = (props: SelectBoxProps): JSX.Element => {
         placeholder={placeholder}
         value={currentValue}
         onChange={handleSearch}
-        onClick={() => setState({ showDropdownList: true })}
+        onClick={() => setState({ showDropdownList: !state.showDropdownList })}
         disabled={disabled}
+        autoFocus
       />
       {showDropdownList && (
         <Droplist>
@@ -59,15 +60,17 @@ const SelectBox = (props: SelectBoxProps): JSX.Element => {
               key={option._id}
               data-value={option.slug}
               onClick={() => {
-                handleInputChange(option.title);
+                handleInputChange(option.title ?? option.name);
               }}
             >
-              {option.title}
+              {option.title ?? option.name}
             </Options>
           ))}
         </Droplist>
       )}
-      <DropArrow />
+      <DropArrow
+        onClick={() => setState({ showDropdownList: !state.showDropdownList })}
+      />
     </Container>
   );
 };

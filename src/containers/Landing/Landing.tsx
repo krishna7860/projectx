@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import HeroComponent from "../../components/HeroComponent/HeroComponent";
 import MostViewed from "./component/MostViewed/MostViewed";
@@ -8,6 +8,14 @@ import WelcomeGuide from "../WelcomeGuide/WelcomeGuide";
 
 const Landing = (props: any): JSX.Element => {
   const { showWelcomeDialog } = props;
+
+  useEffect(() => {
+    if (showWelcomeDialog) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "none";
+    }
+  }, [showWelcomeDialog]);
 
   return (
     <>
