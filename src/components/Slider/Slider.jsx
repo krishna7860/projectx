@@ -1,3 +1,5 @@
+/* eslint-disable no-nested-ternary */
+/* eslint-disable no-unneeded-ternary */
 /* eslint-disable react/prop-types */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable no-return-assign */
@@ -13,20 +15,51 @@ import { NavWrapper, NavFor, NavBack } from "./Style";
 import SliderCard from "../SliderCard/SliderCard";
 
 const HeroSlider = ({ items, setState, activeSlide }) => {
-  const matches = useMediaQuery("(max-width:600px)");
+  const isMobile = useMediaQuery("(max-width:600px)");
+  const desktop = useMediaQuery("(max-width:1400px)");
+  const largeScreens = useMediaQuery("(max-width:1900px)");
+  const extraLarge = useMediaQuery("(max-width:3400px and min-width:2000px)");
+  console.log(desktop, largeScreens, extraLarge);
   let slide;
   const settings = {
     className: "center",
     centerMode: false,
     infinite: true,
     centerPadding: "60px",
-    slidesToShow: matches ? 2 : 3.5,
     arrows: false,
     adaptiveHeight: false,
     variableWidth: false,
     autoplay: false,
     speed: 1000,
     autoplaySpeed: 1500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+    ],
     beforeChange: (current, next) =>
       setState({ oldSlide: current, activeSlide: next }),
     // afterChange: (current) => setState({ activeSlide2: current })
@@ -46,7 +79,7 @@ const HeroSlider = ({ items, setState, activeSlide }) => {
             <SliderCard
               item={item}
               key={item.id}
-              active={index === activeSlide}
+              active={index === activeSlide ? true : false}
             />
           );
         })}

@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import Lightbox from "react-image-lightbox";
+import { Grid } from "@material-ui/core";
+import { LocationOnRounded, Favorite } from "@material-ui/icons";
+
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Header from "../../components/Header/Header";
 import MostViewed from "../Landing/component/MostViewed/MostViewed";
 import ImageGallery from "../../components/ImageGallery/ImageGallery";
 import ReviewsCard from "../../components/ReviewsCard/ReviewsCard";
+import CommentBox from "../../components/CommentBox/CommentBox";
 import {
   PageWrapper,
   InfoContainer,
@@ -27,19 +32,35 @@ const DetailsPage = () => {
     isOpen: false,
     index: 0,
   });
+  const isMobile = useMediaQuery("(max-width:600px)");
   return (
     <>
       {!state.isOpen && <Header isTransparent={false} />}
+      <ImageGallery setState={setState} />
       <PageWrapper>
-        <ImageGallery setState={setState} />
         <InfoContainer>
           <HeaderContainer>
             <Title>Leh Ladakh Bike Trip from Delhi</Title>
-            <Location>Kerela</Location>
+            <Location>
+              <LocationOnRounded
+                style={{ fontSize: isMobile ? "15px" : "20px" }}
+              />
+              Kerela
+            </Location>
           </HeaderContainer>
           <ReviewsContainer>
             <Reviews>789 Reviews</Reviews>
-            <Ratings>89</Ratings>
+            <Ratings>
+              <Favorite
+                color="red"
+                style={{
+                  fontSize: isMobile ? "22px" : "22px",
+                  colo: "red",
+                  marginRight: "5px",
+                }}
+              />
+              89
+            </Ratings>
           </ReviewsContainer>
           <div>
             <OverviewTitle>Overview</OverviewTitle>
@@ -88,10 +109,29 @@ const DetailsPage = () => {
         <MostViewed padding={false} margin={false} />
         <OverviewTitle>Reviews</OverviewTitle>
         <ReviewSection>
-          <ReviewsCard />
-          <ReviewsCard />
-          <ReviewsCard />
+          <Grid container spacing={3}>
+            <Grid item xs={12} lg={4} md={6} sm={12}>
+              <ReviewsCard />
+            </Grid>
+            <Grid item xs={12} lg={4} md={6} sm={12}>
+              <ReviewsCard />
+            </Grid>
+            <Grid item xs={12} lg={4} md={6} sm={12}>
+              <ReviewsCard />
+            </Grid>
+            <Grid item xs={12} lg={4} md={6} sm={12}>
+              <ReviewsCard />
+            </Grid>
+            <Grid item xs={12} lg={4} md={4} sm={6}>
+              <ReviewsCard />
+            </Grid>
+            <Grid item xs={12} lg={4} md={4} sm={6}>
+              <ReviewsCard />
+            </Grid>
+          </Grid>
         </ReviewSection>
+        <OverviewTitle>Write Review</OverviewTitle>
+        <CommentBox />
       </PageWrapper>
       {state.isOpen && (
         <Lightbox

@@ -19,12 +19,21 @@ export const TopSection = styled.div`
 `;
 export const Date = styled.div`
   color: #848484;
+  @media screen and (max-width: 1024px) {
+    font-size: 14px;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 12px;
+  }
 `;
 
 export const RatingWrap = styled.div`
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
+`;
+export const RatingWrapper = styled.div`
+  margin-right: 5px;
 `;
 export const Rating = styled.div`
   margin-bottom: 6px;
@@ -34,8 +43,7 @@ export const Rating = styled.div`
 export const UserDetail = styled.div`
   position: absolute;
   top: 0;
-  left: calc(50% - 80px);
-  width: 160px;
+  left: calc(50% - 45px);
 `;
 
 export const ImageWarp = styled.div`
@@ -43,7 +51,7 @@ export const ImageWarp = styled.div`
   width: 74px;
   background-color: #fff;
   border-radius: 50%;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 `;
 export const Img = styled.img`
   position: absolute;
@@ -66,11 +74,12 @@ export const ReviewsSection = styled.div`
   color: #868686;
   line-height: 1.54;
   text-align: center;
-  overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
-  max-height: 64.68px;
+  margin-bottom: 20px;
+  /* max-height: 64.68px; */
   transition: 0.2s max-height;
+  overflow: hidden;
 `;

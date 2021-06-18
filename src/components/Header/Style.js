@@ -8,6 +8,7 @@ import {
   AppBar,
   IconButton,
 } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 export const HeaderWrapper = styled.div`
   .MuiPaper-elevation4 {
@@ -28,12 +29,15 @@ export const DrawerContainer = styled.div`
   padding: 20px 30px;
 `;
 
-export const LogoItem = styled(Typography)`
+export const LogoItem = styled(Link)`
   font-weight: 600;
   color: ${(props) =>
     props.isTransparent ? "#fffefe" : props.theme.colors.black};
   text-align: left;
   font-size: 30px !important;
+  &:link {
+    text-decoration: none;
+  }
   @media screen and (max-width: 540px) {
     font-size: 24px !important;
   }

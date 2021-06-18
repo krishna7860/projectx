@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/no-use-before-define */
 /* eslint-disable react/prop-types */
@@ -5,6 +6,7 @@
 /* eslint-disable no-return-assign */
 import React, { useState } from "react";
 import Slider from "react-slick";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import "../../../../vendor/Slick/slick-theme.css";
 import "../../../../vendor/Slick/slick.css";
 import "../../../../vendor/Slick/common.css";
@@ -16,6 +18,10 @@ import { Wrapper, Container, InnerWrapper } from "./Style";
 import CardView from "../CardView/CardView";
 
 function MostViewed({ margin, padding }) {
+  const isMobile = useMediaQuery("(max-width:600px)");
+  const isTab = useMediaQuery("(max-width:768px)");
+  const isTablet = useMediaQuery("(max-width:1024px)");
+
   const [state, setState] = useState({
     oldSlide: 0,
     activeSlide: 0,
@@ -25,8 +31,8 @@ function MostViewed({ margin, padding }) {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToShow: isMobile || isTab ? 2 : isTablet ? 3 : 4,
+    slidesToScroll: isMobile ? 2 : 4,
     arrows: true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,

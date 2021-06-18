@@ -1,4 +1,5 @@
 import React from "react";
+import StarRating from "../StartRating/StarRating";
 import {
   ReviewCardWrap,
   Wrapper,
@@ -11,6 +12,7 @@ import {
   Deatils,
   Img,
   ReviewsSection,
+  RatingWrapper,
 } from "./Style";
 
 function ReviewsCard() {
@@ -21,6 +23,14 @@ function ReviewsCard() {
           <Date>25 May 2021</Date>
           <RatingWrap>
             <Rating>Excellent</Rating>
+            <RatingWrapper>
+              <StarRating
+                rating={3.5}
+                color="#C0980A"
+                width="20px"
+                height="20px"
+              />
+            </RatingWrapper>
           </RatingWrap>
         </TopSection>
         <UserDetail>
