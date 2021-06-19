@@ -9,17 +9,17 @@ import Slider from "react-slick";
 import "../../vendor/Slick/slick-theme.css";
 import "../../vendor/Slick/slick.css";
 import "../../vendor/Slick/common.css";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+// import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { NavWrapper, NavFor, NavBack } from "./Style";
 
 import SliderCard from "../SliderCard/SliderCard";
 
 const HeroSlider = ({ items, setState, activeSlide }) => {
-  const isMobile = useMediaQuery("(max-width:600px)");
-  const desktop = useMediaQuery("(max-width:1400px)");
-  const largeScreens = useMediaQuery("(max-width:1900px)");
-  const extraLarge = useMediaQuery("(max-width:3400px and min-width:2000px)");
-  console.log(desktop, largeScreens, extraLarge);
+  // const isMobile = useMediaQuery("(max-width:600px)");
+  // const desktop = useMediaQuery("(max-width:1400px)");
+  // const largeScreens = useMediaQuery("(max-width:1900px)");
+  // const extraLarge = useMediaQuery("(max-width:3400px and min-width:2000px)");
+  // console.log(desktop, largeScreens, extraLarge);
   let slide;
   const settings = {
     className: "center",

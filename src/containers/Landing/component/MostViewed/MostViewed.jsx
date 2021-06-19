@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/no-use-before-define */
@@ -22,7 +23,7 @@ function MostViewed({ margin, padding }) {
   const isTab = useMediaQuery("(max-width:768px)");
   const isTablet = useMediaQuery("(max-width:1024px)");
 
-  const [state, setState] = useState({
+  const [, setState] = useState({
     oldSlide: 0,
     activeSlide: 0,
   });
@@ -39,13 +40,6 @@ function MostViewed({ margin, padding }) {
     beforeChange: (current, next) =>
       setState({ oldSlide: current, activeSlide: next }),
     //  afterChange: (current) => setState({ activeSlide: current })
-  };
-  const handleNext = () => {
-    slide.slickNext();
-    // console.log("asd");
-  };
-  const handlePrev = () => {
-    slide.slickPrev();
   };
 
   function SamplePrevArrow(props) {

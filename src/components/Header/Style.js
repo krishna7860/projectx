@@ -1,13 +1,7 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable import/prefer-default-export */
 import styled from "styled-components";
-import {
-  Toolbar,
-  Typography,
-  Button,
-  AppBar,
-  IconButton,
-} from "@material-ui/core";
+import { Toolbar, Button, AppBar, IconButton } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
 export const HeaderWrapper = styled.div`
