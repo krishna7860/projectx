@@ -9,7 +9,7 @@ import { Body, CategoryContainer, StyledModal } from "./style";
 import Input from "../../components/Input/Input";
 import { searchCategory } from "../WelcomeGuide/action";
 import CategoryCard from "../../components/CategoryCard/CategoryCard";
-import { Category } from "../WelcomeGuide/PickPreferences/PickPreferences.interface";
+// import { Category } from "../WelcomeGuide/PickPreferences/PickPreferences.interface";
 import StyledLink from "../../components/StyledLink/StyledLink";
 
 const CategorySearch = (props: any): JSX.Element => {
@@ -51,7 +51,7 @@ const CategorySearch = (props: any): JSX.Element => {
 
         <CategoryContainer>
           {loading
-            ? Array.from(new Array(6)).map((item) => (
+            ? Array.from(new Array(6)).map(() => (
                 <Box pt={0.5} style={{ width: "200px", margin: "auto" }}>
                   <Skeleton style={{ height: "220px" }} />
                   <Skeleton />

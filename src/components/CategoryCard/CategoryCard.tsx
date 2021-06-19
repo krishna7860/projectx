@@ -10,7 +10,7 @@ import {
 import CategoryCardProps from "./Category.interface";
 
 const CategoryCard = (props: CategoryCardProps): JSX.Element => {
-  const { title, image, description, id } = props;
+  const { title, image, description } = props;
   return (
     <Container>
       <ImageContainer>

@@ -78,7 +78,7 @@ export const setCurrentCity = (value: string) => ({
 });
 
 export const searchCategory =
-  (query: string) =>
+  () =>
   (dispatch: Dispatch): void => {
     dispatch({ type: START_LOADING });
 
