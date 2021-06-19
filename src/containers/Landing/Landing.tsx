@@ -21,9 +21,9 @@ const Landing = (props: any): JSX.Element => {
     <>
       <HeroComponent />
       <SectionTitle>Most Viewed</SectionTitle>
-      <MostViewed />
+      <MostViewed padding margin />
       <SectionTitle>Testimonals</SectionTitle>
-      <TestimonalSection />
+      <TestimonalSection padding="10px 10px" />
       {showWelcomeDialog ? <WelcomeGuide /> : null}
     </>
   );

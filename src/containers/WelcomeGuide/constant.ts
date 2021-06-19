@@ -16,3 +16,5 @@ export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
 export const AUTH_LOADING_START = "AUTH_LOADING_START";
 export const AUTH_LOADING_STOP = "AUTH_LOADING_STOP";
+export const START_LOADING = "START_LOADING";
+export const STOP_LOADING = "STOP_LOADING";

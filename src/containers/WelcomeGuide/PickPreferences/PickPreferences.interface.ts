@@ -4,6 +4,8 @@ export interface Category {
   options: string;
   imageUrl: string;
   placesCount: number;
+  img: string;
+  slug: string;
 }
 
 export interface Demo {

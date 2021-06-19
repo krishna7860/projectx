@@ -12,6 +12,8 @@ import {
   UPDATE_SELECTED_CATEGORIES,
   CATEGORY_LOADING_START,
   CATEGORY_LOADING_STOP,
+  START_LOADING,
+  STOP_LOADING,
 } from "../../containers/WelcomeGuide/constant";
 
 const initialState = {
@@ -110,6 +112,18 @@ export default (state = initialState, action) => {
       };
     }
     case CATEGORY_LOADING_STOP: {
+      return {
+        ...state,
+        categoryLoading: false,
+      };
+    }
+    case START_LOADING: {
+      return {
+        ...state,
+        categoryLoading: true,
+      };
+    }
+    case STOP_LOADING: {
       return {
         ...state,
         categoryLoading: false,

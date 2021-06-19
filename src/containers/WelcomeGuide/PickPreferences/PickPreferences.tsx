@@ -29,6 +29,7 @@ import { Category } from "./PickPreferences.interface";
 import sanitizeString from "../../../Library/helper";
 import { ErrorLayout, ErrorSpan } from "../../../components/Stepper/styles";
 import useGenericState from "../../../Library/useGenericState";
+import { RootState } from "../../../redux/index.interface";
 
 const PickPreferences = (props: any): JSX.Element => {
   const [snackBar, setSnackBar] = useGenericState({
@@ -172,7 +173,7 @@ const PickPreferences = (props: any): JSX.Element => {
   );
 };
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: RootState) => ({
   categories: state.welcomeGuide.category,
   selectedCategory: state.welcomeGuide.selectedCategory,
   loading: state.welcomeGuide.categoryLoading,
