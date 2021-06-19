@@ -72,7 +72,7 @@ function MostViewed({ margin, padding }) {
   return (
     <Wrapper padding={padding} margin={margin}>
       <Slider {...settings} ref={(c) => (slide = c)}>
-        {[0, 2, 0, 0, 0, 0, 0, 0, 0].map((i) => {
+        {[0, 2, 0, 0, 0, 0, 0, 0, 0].map(() => {
           return (
             <Container>
               <InnerWrapper>
