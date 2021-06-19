@@ -35,7 +35,7 @@ function StarRating({ rating, width, height, color }) {
           );
         })}
       {state.half &&
-        new Array(state.half).fill(0).map(() => {
+        new Array(state.half).fill(0).map((i) => {
           return (
             <StarHalf
               color={color}
@@ -46,7 +46,7 @@ function StarRating({ rating, width, height, color }) {
           );
         })}
       {state.empty &&
-        new Array(state.empty).fill(0).map(() => {
+        new Array(state.empty).fill(0).map((i) => {
           return (
             <StarOutline
               color={color}
