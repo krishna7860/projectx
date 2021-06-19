@@ -1,9 +1,11 @@
+import { toast } from "react-toastify";
 import { Dispatch } from "redux";
-import { GET } from "../../api";
+import { GET, POST } from "../../api";
 import {
   BACKEND_BASE_URL,
   CATEGORIES,
   CITIES_ROUTES,
+  REGISTER,
   STATES_ROUTES,
 } from "../../api/routes";
 import {
@@ -20,6 +22,11 @@ import {
   SET_SHOW_WELCOME_MODAL,
   SHOW_SIGNUP_FORM,
   UPDATE_SELECTED_CATEGORIES,
+  SIGNUP_SUCCESS,
+  LOGIN,
+  LOGOUT,
+  AUTH_LOADING_START,
+  AUTH_LOADING_STOP,
 } from "./constant";
 import { Category } from "./PickPreferences/PickPreferences.interface";
 import SignupProps from "./SignUpForm/Signup.interface";
@@ -62,6 +69,41 @@ export const setCurrentCity = (value: string) => ({
   type: SET_CURRENT_CITY,
   payload: value,
 });
+
+export const signupUserSuccess = (payload: any) => ({
+  type: SIGNUP_SUCCESS,
+  payload,
+});
+
+export const signupUser =
+  (payload: {
+    username?: string;
+    password: string;
+    role?: string;
+    email?: string;
+  }) =>
+  async (dispatch: Dispatch): Promise<void> => {
+    dispatch({
+      type: AUTH_LOADING_START,
+    });
+
+    const user = { ...payload };
+    user.email = user.username;
+    delete user.username;
+
+    user.role = "user";
+
+    const response = await POST(`${BACKEND_BASE_URL}/${REGISTER}`, user);
+    if (response.isSuccess) {
+      toast.success("Registered Succesfully");
+      console.log(response);
+      // dispatch({
+      //   type: SET_SHOW_WELCOME_MODAL,
+      //   payload: false,
+      // });
+      // localStorage.setItem("showWelcomeDialog", "true");
+    }
+  };
 
 export const searchCategory =
   (query: string) =>

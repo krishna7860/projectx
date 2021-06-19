@@ -5,9 +5,9 @@ import { connect } from "react-redux";
 import Button from "../../../components/Button/Button";
 import Input from "../../../components/Input/Input";
 import { ErrorLayout, ErrorSpan } from "../../../components/Stepper/styles";
-import StrikedText from "../../../components/StrikedText/StrikedText";
+// import StrikedText from "../../../components/StrikedText/StrikedText";
 import useGenericState from "../../../Library/useGenericState";
-import { setFormValues, setShowWelcomeModal } from "../action";
+import { setFormValues, setShowWelcomeModal, signupUser } from "../action";
 import {
   Container,
   Header,
@@ -54,9 +54,8 @@ const Signup = (props: any): JSX.Element => {
       });
       return;
     }
-    props.setFormValues({ username, password });
-    props.setShowWelcomeModal(false);
-    localStorage.setItem("showWelcomeDialog", "true");
+
+    props.signupUser({ username: state.username, password: state.password });
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -135,6 +134,8 @@ const Signup = (props: any): JSX.Element => {
 
 const mapStateToProps = () => ({});
 
-export default connect(mapStateToProps, { setFormValues, setShowWelcomeModal })(
-  Signup
-);
+export default connect(mapStateToProps, {
+  setFormValues,
+  setShowWelcomeModal,
+  signupUser,
+})(Signup);

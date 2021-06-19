@@ -100,7 +100,7 @@ export default (state = initialState, action) => {
     case SET_SHOW_WELCOME_MODAL: {
       return {
         ...state,
-        showWelcomeModal: false,
+        showWelcomeModal: payload,
       };
     }
     case CATEGORY_LOADING_START: {

@@ -1,5 +1,7 @@
 import { Provider } from "react-redux";
 import React, { useState, useEffect } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { ThemeProvider } from "styled-components";
 // import { createBrowserHistory } from "history";
 import { BrowserRouter as Router } from "react-router-dom";
@@ -21,6 +23,7 @@ function App() {
       {themeLoaded && (
         <Router>
           <ThemeProvider theme={selectedTheme}>
+            <ToastContainer />
             <GlobalStyles />
             <Routes />
           </ThemeProvider>
