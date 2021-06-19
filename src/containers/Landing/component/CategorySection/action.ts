@@ -2,7 +2,7 @@ import { Dispatch } from "redux";
 import { FETCH_POPULAR_CATEGORY } from "./constant";
 
 export const fetchPopularCategory =
-  (query: string) =>
+  () =>
   (dispatch: Dispatch): void => {
     const category = [
       {
