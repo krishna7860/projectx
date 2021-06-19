@@ -6,18 +6,18 @@
       "colors": {
         "body": "#FFFFFF",
         "text": "#000000",
-        "text_1": "#3C4257",
-        "text_3": "#999FAA",
-        "text_4": "#837A7A",
-        "text_5": "#747373",
+        "text-1": "#3C4257",
+        "text-3": "#999FAA",
+        "text-4": "#837A7A",
+        "text-5": "#747373",
         "white": "#FFFFFF",
         "black": "#202021",
         "inputBg": "#F2F4F8",
-        "gray_1": "#E8EAEE",
-        "gray_2": "#C4C4C4",
-        "gray_3": "#888383",
-        "purple_1": "#6181F3",
-        "gold_1": "#C0980A"
+        "gray-1": "#E8EAEE",
+        "gray-2": "#C4C4C4",
+        "gray-3": "#888383",
+        "purple-1": "#6181F3",
+        "gold-1": "#C0980A"
       },
       "fonts": {
         "header": {

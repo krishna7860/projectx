@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^4.11.4",
     "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.58",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -12,6 +13,7 @@
     "@types/node": "^12.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-redux": "^7.1.16",
+    "axios": "^0.21.1",
     "framer-motion": "^4.1.17",
     "history": "^4.10.1",
     "lodash": "^4.17.21",
@@ -42,7 +44,8 @@
     "prepare": "husky install",
     "webhook-slack": "curl -X POST -H 'Content-type: application/json' --data '{\"text\":\"Projectx Build Complete\"}' https://hooks.slack.com/services/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",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "deploy": "yarn build && aws s3 sync build/ s3://projectx-frontend --delete"
   },
   "eslintConfig": {
     "extends": [

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from "react";
 import { connect } from "react-redux";
 import Button from "../../../components/Button/Button";
@@ -72,7 +71,7 @@ const Signup = (props: any): JSX.Element => {
   );
 };
 
-const mapStateToProps = (states: any) => ({});
+const mapStateToProps = () => ({});
 
 export default connect(mapStateToProps, { setFormValues, setShowWelcomeModal })(
   Signup
