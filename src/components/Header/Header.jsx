@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React, { useState, useEffect } from "react";
-import { Toolbar, Drawer, MenuItem, Button } from "@material-ui/core";
+import { Toolbar, Drawer, MenuItem } from "@material-ui/core";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import MenuIcon from "@material-ui/icons/Menu";
 import {
   HeaderWrapper,
@@ -18,14 +19,14 @@ import {
 const headersData = [
   {
     label: "Categories",
-    href: "/listings",
+    href: "/category/9023132",
   },
   {
     label: "About us",
-    href: "/mentors",
+    href: "/",
   },
 ];
-const Header = ({ isTransparent }) => {
+const Header = ({ isTransparent, elevation }) => {
   const [state, setState] = useState({
     mobileView: false,
     drawerOpen: false,
@@ -51,7 +52,7 @@ const Header = ({ isTransparent }) => {
 
   // Logo
   const tourxLogo = (
-    <LogoItem variant="h6" component="h1" isTransparent={isTransparent}>
+    <LogoItem to="/" isTransparent={isTransparent}>
       TourX
     </LogoItem>
   );
@@ -59,17 +60,19 @@ const Header = ({ isTransparent }) => {
   const getMenuButtons = () => {
     return (
       <>
-        {headersData.map(({ label }) => {
+        {headersData.map(({ label, href }) => {
           return (
             <>
-              <MenuButton
-                {...{
-                  key: label,
-                }}
-                isTransparent={isTransparent}
-              >
-                {label}
-              </MenuButton>
+              <Link to={href}>
+                <MenuButton
+                  {...{
+                    key: label,
+                  }}
+                  isTransparent={isTransparent}
+                >
+                  {label}
+                </MenuButton>
+              </Link>
             </>
           );
         })}
@@ -80,7 +83,12 @@ const Header = ({ isTransparent }) => {
         >
           Login
         </ActionButton>
-        <ActionButton variant="contained" isTransparent>
+        <ActionButton
+          variant="contained"
+          outline="contained"
+          isTransparent={isTransparent}
+          compo
+        >
           SignUp
         </ActionButton>
       </>
@@ -123,6 +131,7 @@ const Header = ({ isTransparent }) => {
             "aria-haspopup": "true",
             onClick: handleDrawerOpen,
           }}
+          isTransparent={isTransparent}
         >
           <MenuIcon />
         </MenuIconButton>
@@ -139,17 +148,27 @@ const Header = ({ isTransparent }) => {
 
         <div>{tourxLogo}</div>
         <EndWrapper>
-          <ActionButton variant="outlined" outline="outline">
+          <ActionButton
+            variant="outlined"
+            outline="outline"
+            isTransparent={isTransparent}
+          >
             Login
           </ActionButton>
-          <ActionButton variant="contained">SignUp</ActionButton>
+          <ActionButton
+            variant="contained"
+            outline="contained"
+            isTransparent={isTransparent}
+          >
+            SignUp
+          </ActionButton>
         </EndWrapper>
       </Toolbar>
     );
   };
 
   return (
-    <HeaderWrapper elevation={isTransparent ? "none" : "apply"}>
+    <HeaderWrapper elevation={isTransparent ? "none" : elevation}>
       <header>
         <StyledAppBar color={isTransparent ? "transparent" : "light"}>
           {mobileView ? displayMobile() : displayDesktop()}
@@ -161,10 +180,12 @@ const Header = ({ isTransparent }) => {
 
 Header.propTypes = {
   isTransparent: PropTypes.bool,
+  elevation: PropTypes.string,
 };
 
 Header.defaultProps = {
   isTransparent: false,
+  elevation: "apply",
 };
 
 export default Header;
