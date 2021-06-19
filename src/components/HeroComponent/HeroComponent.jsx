@@ -9,6 +9,10 @@ import { InfoWrapper, Info, Title, Wrapper, Section } from "./Style";
 import data from "../Slider/data";
 import Header from "../Header/Header";
 
+// const handleClick = () => {
+//   console.log("Clicked");
+// };
+
 const HeroComponent = () => {
   const [state, setState] = useState({ oldSlide: 0, activeSlide: 0 });
   const [movedBelow, setMovedBelow] = useState(false);
