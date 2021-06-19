@@ -38,6 +38,8 @@ const Signup = (props: any): JSX.Element => {
     confirmPassword,
   } = state;
 
+  const { selectedCategories } = props;
+
   const handleSignup = () => {
     if (username === "" || password === "" || confirmPassword === "") {
       setState({
@@ -55,7 +57,11 @@ const Signup = (props: any): JSX.Element => {
       return;
     }
 
-    props.signupUser({ username: state.username, password: state.password });
+    props.signupUser({
+      username: state.username,
+      password: state.password,
+      selectedCategories,
+    });
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -132,7 +138,9 @@ const Signup = (props: any): JSX.Element => {
   );
 };
 
-const mapStateToProps = () => ({});
+const mapStateToProps = (state: any) => ({
+  selectedCategories: state.welcomeGuide.selectedCategory,
+});
 
 export default connect(mapStateToProps, {
   setFormValues,

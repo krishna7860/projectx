@@ -17,7 +17,7 @@ const CategorySection = (props: any) => {
 
   useEffect(() => {
     props.fetchPopularCategory();
-  }, [categories]);
+  }, []);
 
   return (
     <Wrapper>

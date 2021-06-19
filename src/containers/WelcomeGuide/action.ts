@@ -21,14 +21,14 @@ import {
   SET_FORM_VALUES,
   SET_SHOW_WELCOME_MODAL,
   SHOW_SIGNUP_FORM,
-  START_LOADING,
-  STOP_LOADING,
+  // START_LOADING,
+  // STOP_LOADING,
   UPDATE_SELECTED_CATEGORIES,
   SIGNUP_SUCCESS,
-  LOGIN,
-  LOGOUT,
+  // LOGIN,
+  // LOGOUT,
   AUTH_LOADING_START,
-  AUTH_LOADING_STOP,
+  // AUTH_LOADING_STOP,
 } from "./constant";
 import { Category } from "./PickPreferences/PickPreferences.interface";
 import SignupProps from "./SignUpForm/Signup.interface";
@@ -81,6 +81,7 @@ export const signupUser =
   (payload: {
     username?: string;
     password: string;
+    selectedCategories: [];
     role?: string;
     email?: string;
   }) =>
@@ -90,20 +91,27 @@ export const signupUser =
     });
 
     const user = { ...payload };
+
+    const preferences = payload.selectedCategories.map(
+      (categories: any) => categories._id
+    );
+
     user.email = user.username;
     delete user.username;
 
     user.role = "user";
 
-    const response = await POST(`${BACKEND_BASE_URL}/${REGISTER}`, user);
+    const response = await POST(`${BACKEND_BASE_URL}/${REGISTER}`, {
+      ...user,
+      preferences,
+    });
     if (response.isSuccess) {
       toast.success("Registered Succesfully");
-      console.log(response);
-      // dispatch({
-      //   type: SET_SHOW_WELCOME_MODAL,
-      //   payload: false,
-      // });
-      // localStorage.setItem("showWelcomeDialog", "true");
+      dispatch({
+        type: SET_SHOW_WELCOME_MODAL,
+        payload: false,
+      });
+      localStorage.setItem("showWelcomeDialog", "true");
     }
   };
 
