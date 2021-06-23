@@ -3,14 +3,12 @@ import { Dispatch } from "redux";
 import { GET, POST } from "../../api";
 import {
   BACKEND_BASE_URL,
-  CATEGORIES,
   CITIES_ROUTES,
+  CATEGORY_ROUTES,
   REGISTER,
   STATES_ROUTES,
 } from "../../api/routes";
 import {
-  CATEGORY_LOADING_START,
-  CATEGORY_LOADING_STOP,
   FETCH_CITIES,
   FETCH_STATES,
   REMOVE_ALL_CATEGORY,
@@ -21,13 +19,14 @@ import {
   SET_FORM_VALUES,
   SET_SHOW_WELCOME_MODAL,
   SHOW_SIGNUP_FORM,
-  // START_LOADING,
-  // STOP_LOADING,
+  START_LOADING,
+  STOP_LOADING,
   UPDATE_SELECTED_CATEGORIES,
   SIGNUP_SUCCESS,
   // LOGIN,
   // LOGOUT,
   AUTH_LOADING_START,
+
   // AUTH_LOADING_STOP,
 } from "./constant";
 import { Category } from "./PickPreferences/PickPreferences.interface";
@@ -118,21 +117,25 @@ export const signupUser =
 export const searchCategory =
   (query: string) =>
   async (dispatch: Dispatch): Promise<void> => {
+    dispatch({ type: START_LOADING });
+
     dispatch({
-      type: CATEGORY_LOADING_START,
+      type: START_LOADING,
     });
 
-    const categories = await GET(
-      `${BACKEND_BASE_URL}/${CATEGORIES}?search=${query}`
+    const response = await GET(
+      `${BACKEND_BASE_URL}/${CATEGORY_ROUTES}?search=${query}`
     );
 
-    dispatch({
-      type: SEARCH_CATEGORIES,
-      payload: categories?.data ?? [],
-    });
-    dispatch({
-      type: CATEGORY_LOADING_STOP,
-    });
+    if (response.isSuccess) {
+      dispatch({
+        type: SEARCH_CATEGORIES,
+        payload: response.data,
+      });
+      dispatch({
+        type: STOP_LOADING,
+      });
+    }
   };
 
 export const updateSelectedCategory = (category: Category) => ({

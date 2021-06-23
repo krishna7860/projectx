@@ -3,9 +3,8 @@ export interface Category {
   title: string;
   options: string;
   imageUrl: string;
-  placesCount: number;
-  img: string;
   slug: string;
+  placesCount: number;
 }
 
 export interface Demo {

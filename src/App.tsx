@@ -1,3 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react/prop-types */
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 import { Provider } from "react-redux";
 import React, { useState, useEffect } from "react";
 import { ToastContainer } from "react-toastify";
@@ -10,11 +13,12 @@ import { GlobalStyles } from "./theme/GlobalStyles";
 import Routes from "./routes";
 import store from "./redux/index";
 import "react-image-lightbox/style.css";
+import { RootState } from "./redux/index.interface";
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 function App() {
   const { theme, themeLoaded } = useTheme();
   const [selectedTheme, setSelectedTheme] = useState(theme);
+
   // const history = createBrowserHistory();
   useEffect(() => {
     setSelectedTheme(theme);
@@ -33,5 +37,10 @@ function App() {
     </Provider>
   );
 }
+
+export const mapStateToProps = (state: RootState) => ({
+  isAuth: state.auth.isAuth,
+  user: state.auth.token,
+});
 
 export default App;
