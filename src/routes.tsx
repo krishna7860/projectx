@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
@@ -25,7 +26,6 @@ const Routes = (props: any) => {
     } else {
       props.setIsAuth(false);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <React.Suspense fallback={<Loader />}>
