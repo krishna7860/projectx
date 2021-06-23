@@ -1,5 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react/prop-types */
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 import { Provider } from "react-redux";
 import React, { useState, useEffect } from "react";
+// import { ToastContainer } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 import { ThemeProvider } from "styled-components";
 // import { createBrowserHistory } from "history";
 import { BrowserRouter as Router } from "react-router-dom";
@@ -10,11 +15,12 @@ import Routes from "./routes";
 import ErrorFallback from "./components/Error/ErrorFallback";
 import store from "./redux/index";
 import "react-image-lightbox/style.css";
+import { RootState } from "./redux/index.interface";
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 function App() {
   const { theme, themeLoaded } = useTheme();
   const [selectedTheme, setSelectedTheme] = useState(theme);
+
   // const history = createBrowserHistory();
   useEffect(() => {
     setSelectedTheme(theme);
@@ -40,5 +46,10 @@ function App() {
     </ErrorBoundary>
   );
 }
+
+export const mapStateToProps = (state) => ({
+  isAuth: state.auth.isAuth,
+  user: state.auth.token,
+});
 
 export default App;
