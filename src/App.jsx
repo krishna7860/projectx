@@ -15,7 +15,7 @@ import Routes from "./routes";
 import ErrorFallback from "./components/Error/ErrorFallback";
 import store from "./redux/index";
 import "react-image-lightbox/style.css";
-import { RootState } from "./redux/index.interface";
+// import { RootState } from "./redux/index.interface";
 
 function App() {
   const { theme, themeLoaded } = useTheme();

@@ -5,8 +5,7 @@ import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import Header from "../Header/Header";
 import { Container, Wrapper, Reload, Text, Illustration } from "./Style";
-import ErroSvg from "../../static/error.svg";
-import Footer from "../Footer/Footer";
+import ErroSvg from "../../static/404Page.svg";
 
 function NotFoundPage() {
   return (
