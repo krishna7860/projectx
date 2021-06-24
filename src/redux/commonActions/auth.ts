@@ -36,5 +36,9 @@ export const loginUser = (payload: any) => async (dispatch: Dispatch) => {
     payload
   );
 
+  dispatch({
+    type: LOGIN,
+  });
+
   return response;
 };
