@@ -6,10 +6,7 @@ import {
   Drawer,
   MenuItem,
   Dialog,
-  DialogTitle,
   DialogContent,
-  DialogActions,
-  Button,
 } from "@material-ui/core";
 import CachedIcon from "@material-ui/icons/Cached";
 import { connect } from "react-redux";
