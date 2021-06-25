@@ -25,8 +25,6 @@ export const fetchPlaceDetails =
     );
 
     if (response.isSuccess) {
-      console.log(response, "rin");
-
       dispatch({
         type: FETCH_SINGLE_PLACE_DETAIL,
         payload: response?.data,
