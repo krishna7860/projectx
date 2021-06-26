@@ -231,7 +231,7 @@ const Header = ({
     return (
       <>
         {headersData.map(({ label }) => {
-          return <MenuItem>{label}</MenuItem>;
+          return <MenuItem key={label}>{label}</MenuItem>;
         })}
       </>
     );
