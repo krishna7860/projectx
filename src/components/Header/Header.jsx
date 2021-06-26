@@ -12,9 +12,7 @@ import {
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 import MenuIcon from "@material-ui/icons/Menu";
-import { uuid } from "uuidv4";
 import {
   HeaderWrapper,
   StyledToolbar,
