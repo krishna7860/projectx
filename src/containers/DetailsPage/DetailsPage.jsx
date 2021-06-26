@@ -48,11 +48,24 @@ const DetailsPage = (props) => {
     props.fetchReviews();
   }, [params.place_id]);
 
-  const handleAddReview = (text) => {
-    props.fetchPlaceDetails(params.place_id);
-    props.addReview(params.place_id, text, rating, user._id);
+  const handleAddReview = async (text) => {
+    const response = await props.addReview(
+      params.place_id,
+      text,
+      rating,
+      user._id,
+      user.email
+    );
     setRating(0);
+
+    if (response.isSuccess) {
+      props.fetchPlaceDetails(params.place_id);
+    }
   };
+
+  useEffect(() => {
+    document.title = `${activePlace.title} | TOURX`;
+  }, [activePlace]);
 
   const isMobile = useMediaQuery("(max-width:600px)");
   return (
@@ -97,7 +110,7 @@ const DetailsPage = (props) => {
             <div>
               <OverviewTitle>Highlights</OverviewTitle>
               {activePlace?.highlights?.map((item) => (
-                <Wrapper>
+                <Wrapper key={item}>
                   <HighLightIcon color="#59A5FF" width="25px" height="25px" />
                   <HighlightsDesc>{item}</HighlightsDesc>
                 </Wrapper>
@@ -110,7 +123,7 @@ const DetailsPage = (props) => {
           <ReviewSection>
             <Grid container spacing={3}>
               {activePlace?.reviews?.slice(0, 6).map((review) => (
-                <Grid item xs={12} lg={4} md={6} sm={12}>
+                <Grid key={review._id} item xs={12} lg={4} md={6} sm={12}>
                   <ReviewsCard review={review} />
                 </Grid>
               ))}

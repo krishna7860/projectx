@@ -1,5 +1,7 @@
+import { Dialog, DialogContent } from "@material-ui/core";
 import React from "react";
 import { connect } from "react-redux";
+import Login from "../../components/LoginForm/Login";
 import Stepper from "../../components/Stepper/Stepper";
 import { RootState } from "../../redux/index.interface";
 import { showSignupForm } from "./action";
@@ -8,8 +10,7 @@ import PickPreferences from "./PickPreferences/PickPreferences";
 import Signup from "./SignUpForm/Signup";
 import { Container, Modal } from "./style";
 
-const WelcomeGuide = (props: any): JSX.Element => {
-  const { showSignup } = props;
+const WelcomeGuide = (): JSX.Element => {
   const titleList = [
     {
       index: 1,
@@ -21,24 +22,52 @@ const WelcomeGuide = (props: any): JSX.Element => {
       title: "Please Select Preferences",
       description: "Select Preferences",
     },
+    {
+      index: 3,
+      title: "Sign up for Tourx",
+      description: "Signup",
+    },
   ];
+
+  const [loginOpen, setLoginOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    document.title = "Welcome To TOURX";
+  }, []);
 
   return (
     <Container>
-      <Modal>
-        {!showSignup ? (
+      {!loginOpen && !localStorage.getItem("showWelcomeDialog") ? (
+        <Modal>
           <Stepper
             initial={0}
             titleList={titleList}
-            submit={() => props.showSignupForm()}
+            submit={() => setLoginOpen(true)}
           >
             <PickLocation />
             <PickPreferences />
+            <Signup isModal />
           </Stepper>
-        ) : (
-          <Signup />
-        )}
-      </Modal>
+        </Modal>
+      ) : (
+        <Dialog
+          open={loginOpen}
+          onClose={() => setLoginOpen(false)}
+          scroll="paper"
+          aria-labelledby="scroll-dialog-title"
+          aria-describedby="scroll-dialog-description"
+          fullWidth
+          maxWidth="sm"
+        >
+          <DialogContent>
+            <Login
+              padding="2rem 2rem"
+              isModal
+              handleDrawerClose={() => setLoginOpen(false)}
+            />
+          </DialogContent>
+        </Dialog>
+      )}
     </Container>
   );
 };

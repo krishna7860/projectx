@@ -1,10 +1,13 @@
+/* eslint-disable no-restricted-globals */
 import { Snackbar } from "@material-ui/core";
 import React from "react";
+import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import WarningIcon from "@material-ui/icons/Warning";
 import { connect } from "react-redux";
 import useGenericState from "../../Library/useGenericState";
 import { StepsProps } from "./Stepper.interface";
 import { Header, Subheader, Button, ErrorLayout, ErrorSpan } from "./styles";
+import { StyledText } from "../../containers/WelcomeGuide/SignUpForm/style";
 
 const Stepper = (props: StepsProps): JSX.Element => {
   const {
@@ -12,10 +15,10 @@ const Stepper = (props: StepsProps): JSX.Element => {
     initial,
     children,
     titleList,
-    submit,
     selectedState,
     selectedCity,
     selectedCategory,
+    submit,
   } = props;
 
   const [state, setState] = useGenericState({
@@ -38,9 +41,6 @@ const Stepper = (props: StepsProps): JSX.Element => {
       }
     }
 
-    setState({ current: activeStep });
-  };
-  const handleSubmit = () => {
     if (current === 1) {
       if (selectedCategory.length < 2) {
         setState({
@@ -50,7 +50,8 @@ const Stepper = (props: StepsProps): JSX.Element => {
         return;
       }
     }
-    submit();
+
+    setState({ current: activeStep });
   };
 
   const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
@@ -59,6 +60,11 @@ const Stepper = (props: StepsProps): JSX.Element => {
     }
 
     setState({ showSnackBar: false });
+  };
+
+  const handleOpenLogin = () => {
+    localStorage.setItem("showWelcomeDialog", "true");
+    submit();
   };
   return (
     <div className={className}>
@@ -70,43 +76,55 @@ const Stepper = (props: StepsProps): JSX.Element => {
           <div key={title.index}>
             <hr className={current === index ? "active" : ""} />
             <div>
-              <div className={current === index ? "active" : ""} />
+              {(current === 1 && index === 0) ||
+              (current === 2 && index === 1) ||
+              (current === 2 && index === 0) ? (
+                <CheckCircleIcon style={{ width: "24px", height: "24px" }} />
+              ) : (
+                <div className={current === index ? "active" : ""}>
+                  {index + 1}
+                </div>
+              )}
               <span>{title.description}</span>
             </div>
           </div>
         ))}
       </Subheader>
       {steps[state.current]}
-      <div style={{ textAlign: "right" }}>
-        {current !== children.length - 1 ? (
-          <Button
-            type="button"
-            disabled={current === steps.length - 1 && true}
-            onClick={() => handleClick(current + 1)}
-          >
-            Next
-          </Button>
-        ) : (
-          ""
-        )}
-        {current !== 0 ? (
-          <Button
-            type="button"
-            disabled={!current}
-            onClick={() => handleClick(current - 1)}
-          >
-            Previous
-          </Button>
-        ) : (
-          ""
-        )}
-        {current === children.length - 1 ? (
-          <Button type="button" onClick={handleSubmit}>
-            Sign Up
-          </Button>
-        ) : (
-          ""
-        )}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <StyledText onClick={handleOpenLogin}>
+          Already have an account ? Login Here
+        </StyledText>
+        <div style={{ textAlign: "right" }}>
+          {current !== children.length - 1 ? (
+            <Button
+              type="button"
+              disabled={current === steps.length - 1 && true}
+              onClick={() => handleClick(current + 1)}
+            >
+              Next
+            </Button>
+          ) : (
+            ""
+          )}
+          {current !== 0 ? (
+            <Button
+              type="button"
+              disabled={!current}
+              onClick={() => handleClick(current - 1)}
+            >
+              Previous
+            </Button>
+          ) : (
+            ""
+          )}
+        </div>
       </div>
       <Snackbar
         open={showSnackBar}

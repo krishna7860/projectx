@@ -24,14 +24,15 @@ export const DrawerContainer = styled.div`
 `;
 
 export const LogoItem = styled(Link)`
-  font-weight: 600;
-  color: ${(props) =>
-    props.isTransparent ? "#fffefe" : props.theme.colors.black};
-  text-align: left;
-  font-size: 30px !important;
   &:link {
     text-decoration: none;
   }
+`;
+export const InnerItem = styled.div`
+  font-weight: 600;
+  color: ${(props) => (props.isColored ? "#fffefe" : props.theme.colors.black)};
+  text-align: left;
+  font-size: 30px !important;
   @media screen and (max-width: 540px) {
     font-size: 24px !important;
   }
@@ -99,4 +100,47 @@ export const EndWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   width: 100%;
+`;
+
+export const RelativeWrapper = styled.div`
+  position: relative;
+`;
+
+export const Profile = styled.div`
+  position: absolute;
+  width: 220px;
+  background: white;
+  border: black;
+  border-radius: 10px;
+  left: 80px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+
+  & > div.profile : {
+    background: #eaecee;
+  }
+`;
+
+export const List = styled.div`
+  width: 100%;
+  padding: 1rem 1.5rem;
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  cursor: pointer;
+  &.profile {
+    justify-content: center;
+    padding-bottom: 0.5rem;
+  }
+`;
+
+export const Avatar = styled.img`
+  height: 64px;
+  width: 64px;
+  border-radius: 50%;
+`;
+
+export const Span = styled.p`
+  font-size: 14px;
 `;
