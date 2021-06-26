@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 import { Snackbar } from "@material-ui/core";
 import React from "react";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";

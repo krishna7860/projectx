@@ -37,7 +37,7 @@ const WelcomeGuide = (): JSX.Element => {
 
   return (
     <Container>
-      {!loginOpen ? (
+      {!loginOpen && !localStorage.getItem("showWelcomeDialog") ? (
         <Modal>
           <Stepper
             initial={0}
