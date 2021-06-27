@@ -2,9 +2,16 @@
 /* eslint-disable import/prefer-default-export */
 import styled from "styled-components";
 import { motion } from "framer-motion";
+// import ReactLazyBlur from 'react-lazy-blur'
 
-export const Section = styled(motion.div)`
+export const Section = styled.div`
   background: url(${(props) => props.bg}), rgba(0, 0, 0, 0.6);
+  /* background: url("../../static/images/blurry.jpeg"); */
+  -webkit-filter: blur(3px);
+  filter: blur(3px);
+  transition: filter 600ms, -webkit-filter 600ms;
+  -webkit-filter: blur(0);
+  filter: blur(0);
   /* left: 0;
   position: absolute;
   top: 0; */
