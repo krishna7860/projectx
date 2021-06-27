@@ -14,12 +14,13 @@ function SliderCard({ item, active, addToFavourait, user }) {
         <Text>{item.title}</Text>
 
         <StarRating
-          rating={item.rating}
+          rating={item?.rating ? item.rating : 3.5}
           color="white"
           width="15px"
           height="15px"
         />
       </StarWrapper>
+
       <Image src={item.images[0]} alt="image" />
       <IconWrapper>
         <FormControlLabel

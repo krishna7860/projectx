@@ -31,6 +31,7 @@ const HeroSlider = ({ items, setState, activeSlide, addToFavourait, user }) => {
     variableWidth: false,
     autoplay: false,
     speed: 1000,
+    lazyLoad: true,
     autoplaySpeed: 1500,
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -74,7 +75,7 @@ const HeroSlider = ({ items, setState, activeSlide, addToFavourait, user }) => {
   return (
     <div className="slider-wrapper">
       <Slider {...settings} ref={(c) => (slide = c)}>
-        {items.map((item, index) => {
+        {items?.map((item, index) => {
           return (
             <SliderCard
               item={item}

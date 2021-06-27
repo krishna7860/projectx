@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import MyAccount from "./containers/MyAccount/MyAccount";
 import PrivateRoute from "./Library/PrivateRoute";
 import Footer from "./components/Footer/Footer";
+import Landing from "./containers/Landing/Landing";
 import Loader from "./components/Loader/Loader";
 import NotFoundPage from "./components/404/404Page";
 import { RootState } from "./redux/index.interface";
@@ -12,7 +13,6 @@ import { authenticateUser, setIsAuth } from "./redux/commonActions/auth";
 import { useNetwork } from "./Library/helper";
 import NetworkError from "./components/NetworkError/NetworkError";
 
-const Landing = React.lazy(() => import("./containers/Landing/Landing"));
 const DetailsPage = React.lazy(
   () => import("./containers/DetailsPage/DetailsPage")
 );

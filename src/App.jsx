@@ -14,7 +14,9 @@ import { GlobalStyles } from "./theme/GlobalStyles";
 import Routes from "./routes";
 import ErrorFallback from "./components/Error/ErrorFallback";
 import store from "./redux/index";
+import ScrollToTop from "./utils/ScrollToTop";
 import "react-image-lightbox/style.css";
+
 // import { RootState } from "./redux/index.interface";
 
 function App() {
@@ -35,6 +37,7 @@ function App() {
       <Provider store={store}>
         {themeLoaded && (
           <Router>
+            <ScrollToTop />
             <ThemeProvider theme={selectedTheme}>
               <GlobalStyles />
               <ErrorBoundary FallbackComponent={ErrorFallback}>
